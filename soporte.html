@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte Técnico - HJSuite Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos para página de soporte */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #283593 100%);
+            color: white;
+            border-radius: var(--border-radius);
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tecnicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .tecnico-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-top: 5px solid var(--color-accent);
+        }
+        
+        .tecnico-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .tecnico-img {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tecnico-img i {
+            font-size: 4rem;
+            color: var(--color-primary);
+        }
+        
+        .tecnico-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .especialidad {
+            color: var(--color-accent);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .tecnico-info {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+        
+        .tecnico-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tecnico-info i {
+            color: var(--color-secondary);
+            width: 20px;
+        }
+        
+        .horarios-soporte {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            margin: 3rem 0;
+        }
+        
+        .horarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .horario-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .horario-item i {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .emergencia {
+            background: linear-gradient(135deg, #ff5252 0%, #d32f2f 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .emergencia h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .emergencia-btn {
+            display: inline-block;
+            background: white;
+            color: #d32f2f;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+        
+        .emergencia-btn:hover {
+            background: #ffebee;
+            transform: scale(1.05);
+        }
+        
+        .faq-section {
+            margin: 4rem 0;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--color-light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            border-top: 1px solid #eee;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Misma navegación que index.html -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-cash-register"></i>
+                <span>HJSuite Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="sistemas.html"><i class="fas fa-shopping-cart"></i> Sistemas</a></li>
+                <li><a href="soporte.html"><i class="fas fa-headset"></i> Soporte</a></li>
+                <li><a href="recursos.html"><i class="fas fa-tools"></i> Recursos</a></li>
+                <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container" style="padding-top: 2rem;">
+        <div class="page-header">
+            <h1><i class="fas fa-headset"></i> Soporte Técnico</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">
+                Nuestro equipo de expertos está disponible para ayudarte con cualquier consulta o problema técnico.
+            </p>
+        </div>
+
+        <!-- Equipo de Soporte -->
+        <h2 style="text-align: center; margin: 2rem 0; color: var(--color-primary);">
+            <i class="fas fa-users"></i> Nuestro Equipo de Especialistas
+        </h2>
+        
+        <div class="tecnicos-grid">
+            <div class="tecnico-card">
+                <div class="tecnico-img">
+                    <img src="images/team/herbie.jpg"></i>
+                </div>
+                <h3>Prog. Heriberto Moreno</h3>
+                <p class="especialidad">Especialista en Sistemas POS e Inventarios</p>
+                <p>+30 años de experiencia en implementación de sistemas punto de venta para restaurantes y retail.</p>
+                
+                <div class="tecnico-info">
+                    <p><i class="fas fa-envelope"></i> hmoreno@HJsuite.com</p>
+                    <p><i class="fas fa-phone"></i> +1 786 813 3555</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Viernes 8:00-17:00</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Hialeah. Fla. EEUU</p>
+                    <p><i class="fas fa-certificate"></i> Especialización: Inventarios, Procesos</p>
+                </div>
+            </div>
+            
+            <div class="tecnico-card">
+                <div class="tecnico-img">
+                    <img src="images/team/jjr.png"></i>
+                </div>
+                <h3>Lic. José Julio Rodríguez</h3>
+                <p class="especialidad">Especialista en Sistemas POS y Redes</p>
+                <p>Experta en sistemas de control de stock, análisis de datos y generación de reportes empresariales.</p>
+                
+                <div class="tecnico-info">
+                    <p><i class="fas fa-envelope"></i> jjr@HJsuite.com</p>
+                    <p><i class="fas fa-phone"></i> +535 8184680</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Sábado 9:00-18:00</p>
+                    <p><i class="fas fa-map-marker-alt"></i> La Habana, Cuba</p>
+                    <p><i class="fas fa-certificate"></i> Especialización: Análisis de Datos</p>
+                </div>
+            </div>
+            
+            <div class="tecnico-card">
+                <div class="tecnico-img">
+                    <img src="images/team/carlos.png"></i>
+                </div>
+                <h3>Ing. Carlos M. Alba</h3>
+                <p class="especialidad">Desarrollador Java</p>
+                <p>Experto en ECR, resolución de problemas en Puntos de Venta.</p>
+                
+                <div class="tecnico-info">
+                    <p><i class="fas fa-envelope"></i> carlosm@hjsuite.com</p>
+                    <p><i class="fas fa-phone"></i> +34 617 026 915</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Viernes 9:00-19:00</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Madrid, España</p>
+                    <p><i class="fas fa-certificate"></i> Certificación SAT</p>
+                </div>
+            </div>
+
+            <div class="tecnico-card">
+                <div class="tecnico-img">
+                    <img src="images/team/Dayron.png"></i>
+                </div>
+                <h3>Técn. Dayron Serpa</h3>
+                <p class="especialidad">Técnico Informático</p>
+                <p>Instalador, Entrenador.</p>
+                
+                <div class="tecnico-info">
+                    <p><i class="fas fa-envelope"></i> dserpa@hjsuite.com</p>
+                    <p><i class="fas fa-phone"></i> +535 8145617</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Viernes 9:00-19:00</p>
+                    <p><i class="fas fa-map-marker-alt"></i> La Habana, Cuba</p>
+                    <p><i class="fas fa-certificate"></i> Certificación SAT</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Horarios de Soporte -->
+        <div class="horarios-soporte">
+            <h2 style="text-align: center; color: var(--color-primary); margin-bottom: 1rem;">
+                <i class="fas fa-calendar-alt"></i> Horarios de Atención
+            </h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                Contamos con diferentes canales de soporte para atenderte según tus necesidades.
+            </p>
+            
+            <div class="horarios-grid">
+                <div class="horario-item">
+                    <i class="fas fa-phone"></i>
+                    <h4>Soporte Telefónico</h4>
+                    <p>Lun-Vie: 8:00-18:00</p>
+                    <p>Sáb: 9:00-13:00</p>
+                    <p><strong>+535 8145617</strong></p>
+                </div>
+                
+                <div class="horario-item">
+                    <i class="fas fa-comments"></i>
+                    <h4>Chat en Línea</h4>
+                    <p>Lun-Vie: 7:00-20:00</p>
+                    <p>Sáb-Dom: 9:00-17:00</p>
+                    <p><strong>Disponible en sitio web</strong></p>
+                </div>
+                
+                <div class="horario-item">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Soporte por Email</h4>
+                    <p>Respuesta en:</p>
+                    <p>< 4 horas (urgente)</p>
+                    <p>< 24 horas (general)</p>
+                </div>
+                
+                <div class="horario-item">
+                    <i class="fas fa-user-check"></i>
+                    <h4>Soporte Presencial</h4>
+                    <p>Con cita previa</p>
+                    <p>Lun-Vie: 9:00-16:00</p>
+                    <p><strong>Agendar vía teléfono</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soporte de Emergencia -->
+        <div class="emergencia">
+            <h3><i class="fas fa-exclamation-triangle"></i> Soporte de Emergencia 24/7</h3>
+            <p>Para problemas críticos que afecten el funcionamiento de tu negocio fuera del horario regular.</p>
+            <a href="tel:+50255551234" class="emergencia-btn">
+                <i class="fas fa-phone-alt"></i> LLAMADA DE EMERGENCIA
+            </a>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                * Este servicio aplica únicamente para problemas que impidan el funcionamiento normal del sistema.
+            </p>
+        </div>
+
+        <!-- Preguntas Frecuentes -->
+        <div class="faq-section">
+            <h2 style="text-align: center; color: var(--color-primary); margin-bottom: 2rem;">
+                <i class="fas fa-question-circle"></i> Preguntas Frecuentes (FAQ)
+            </h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Cuánto tiempo toma la implementación del sistema?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    El tiempo de implementación varía según la complejidad del negocio. Para un restaurante pequeño: 3-5 días. Depende de si se instala uno o ambos sistemas (conectados por red o no) y si se incluyen impresoras de órdenes en áreas de elaboración (cocina, pizzería). Para un supermercado: 2-3 días. Incluye instalación, configuración y capacitación.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Ofrecen capacitación para el personal?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Sí, incluimos capacitación completa para todos los usuarios (cajeros, jefes de turno, contadores). Realizamos sesiones prácticas de 2-4 horas por grupo, material de apoyo y sesiones de refuerzo durante el primer mes.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿El sistema funciona sin internet?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Sí, ambos sistemas funcionan completamente offline. Solo se requiere internet para el envío de información a los administradores.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Qué tipo de hardware necesito?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    El sistema funciona en cualquier computadora con Windows 10/11. Recomendamos: Procesador i3 o superior, 8GB RAM, 256GB SSD. Para impresión fiscal necesitarás una impresora de recibos de 58-80 mm para restaurantes y mercados (en este último un escáner de código de barras acelera la venta). Para facturación en papel tipo carta servirá una impresora estándar cualquiera.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mismo footer que index.html -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>HJSuite Solutions</h4>
+                    <p>Especialistas en sistemas de gestión empresarial desde 1993.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto Rápido</h4>
+                    <p><i class="fas fa-phone"></i> +535 8145617</p>
+                    <p><i class="fas fa-envelope"></i>dserpa@HJSuite.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ciudad Habana</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horarios</h4>
+                    <p>Lunes a Viernes: 8:00 - 18:00</p>
+                    <p>Sábados: 9:00 - 13:00</p>
+                    <p>Soporte Emergencia: 24/7</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> HJSuite Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Script para FAQ
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Cerrar otros items abiertos
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Alternar el item actual
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

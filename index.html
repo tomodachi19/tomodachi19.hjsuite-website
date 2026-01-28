@@ -1,18 +1,136 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>my-first-website</title>
-  <LINK href="styles.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJSuite Solutions - Sistemas POS e Inventarios</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-cash-register"></i>
+                <span>HJSuite Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="sistemas.html"><i class="fas fa-shopping-cart"></i> Sistemas</a></li>
+                <li><a href="soporte.html"><i class="fas fa-headset"></i> Soporte</a></li>
+                <li><a href="recursos.html"><i class="fas fa-tools"></i> Recursos</a></li>
+                <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>Soluciones Tecnológicas para tu Negocio</h1>
+            <p class="subtitle">Más de 30 años desarrollando sistemas POS, control de inventarios y contabilidad para restaurantes y comercios en Cuba</p>
+            <a href="sistemas.html" class="btn btn-primary">Ver Nuestros Sistemas</a>
+            <a href="contacto.html" class="btn btn-secondary">Contactar Ahora</a>
+        </div>
+    </header>
 
-<!-- Change this code here by copy and pasting your template on line 15 -->
-<p>Welcome to your first GitHub Pages website!</p>
+    <!-- Sistemas Destacados -->
+    <section class="sistemas-destacados">
+        <div class="container">
+            <h2><i class="fas fa-star"></i> Nuestras Soluciones</h2>
+            <div class="sistemas-grid">
+                <div class="sistema-card">
+                    <div class="sistema-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Sistema POS Avanzado</h3>
+                    <p>Punto de venta completo con control de mesas, comandas, órdenes a áreas, ventas por códigos de barras, inventario unitario, reportes en tiempo real y cierre de caja automático.</p>
+                    <a href="sistemas.html#pos" class="btn-link">Ver capturas <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="sistema-card">
+                    <div class="sistema-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3>Control de Ventas, Inventarios y Finanzas</h3>
+                    <p>Almacenamiento y gestión de ventas, múltiples almacenes y áreas, compras, despachos, procesamientos y elaboraciones de productos con sus costos</p>
+                    <a href="sistemas.html#inventarios" class="btn-link">Ver capturas <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="sistema-card">
+                    <div class="sistema-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Módulo Contable Integrado</h3>
+                    <p>Contabilidad automática, estados financieros, control de cuentas por pagar/cobrar, reportes de gastos.</p>
+                    <a href="sistemas.html#contable" class="btn-link">Más información <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Por qué elegirnos -->
+    <section class="porque-elegirnos">
+        <div class="container">
+            <h2><i class="fas fa-check-circle"></i> ¿Por qué HJSuite Solutions?</h2>
+            <div class="beneficios">
+                <div class="beneficio">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Soporte 24/7</h3>
+                    <p>Asistencia técnica permanente para tu negocio</p>
+                </div>
+                <div class="beneficio">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Acceso Remoto</h3>
+                    <p>Conoce el estado de tus ventas desde cualquier dispositivo</p>
+                </div>
+                <div class="beneficio">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Capacitación Incluida</h3>
+                    <p>Entrenamiento completo para tu personal</p>
+                </div>
+                <div class="beneficio">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Actualizaciones Constantes</h3>
+                    <p>Mejoras y nuevas funciones regularmente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>HJSuite Solutions</h4>
+                    <p>Especialistas en sistemas de gestión de ventas desde 1993.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto Rápido</h4>
+                    <p><i class="fas fa-phone"></i> +535 8145617</p>
+                    <p><i class="fas fa-envelope"></i> dserpa@HJSuite.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ciudad Habana</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horarios</h4>
+                    <p>Lunes a Viernes: 8:00 - 18:00</p>
+                    <p>Sábados: 9:00 - 13:00</p>
+                    <p>Soporte Emergencia: 24/7</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> HJSuite Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

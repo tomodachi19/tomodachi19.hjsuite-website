@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas - HJSuite Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos adicionales para página de sistemas */
+        .sistema-detalle {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .sistema-detalle h3 {
+            color: var(--color-primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .sistema-detalle h3 i {
+            color: var(--color-accent);
+        }
+        
+        .caracteristicas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .caracteristica {
+            background: var(--color-light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--color-secondary);
+        }
+        
+        .caracteristica i {
+            color: var(--color-secondary);
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .galeria-sistemas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .imagen-sistema {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .imagen-sistema:hover {
+            transform: scale(1.03);
+        }
+        
+        .imagen-sistema img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .pie-imagen {
+            padding: 1rem;
+            background: white;
+            text-align: center;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        
+        .comparativa {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            margin: 3rem 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        th {
+            background: var(--color-primary);
+            color: white;
+            padding: 1.2rem;
+            text-align: left;
+        }
+        
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:hover {
+            background: #f5f7fa;
+        }
+        
+        .check {
+            color: var(--color-success);
+            font-weight: bold;
+        }
+        
+        .demo-btn {
+            display: inline-block;
+            background: var(--color-success);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+        
+        .demo-btn:hover {
+            background: #388e3c;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Misma navegación que index.html -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-cash-register"></i>
+                <span>HJSuite Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="sistemas.html"><i class="fas fa-shopping-cart"></i> Sistemas</a></li>
+                <li><a href="soporte.html"><i class="fas fa-headset"></i> Soporte</a></li>
+                <li><a href="recursos.html"><i class="fas fa-tools"></i> Recursos</a></li>
+                <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 4rem 0;">
+        <h1 style="text-align: center; margin-bottom: 1rem; color: var(--color-primary);">
+            <i class="fas fa-laptop-code"></i> Nuestros Sistemas
+        </h1>
+        <p style="text-align: center; font-size: 1.2rem; color: var(--color-gray); max-width: 800px; margin: 0 auto 3rem;">
+            Soluciones tecnológicas diseñadas específicamente para la gestión eficiente de restaurantes y comercios.
+        </p>
+
+        <!-- Sistema POS -->
+        <section class="sistema-detalle" id="pos">
+            <h3><i class="fas fa-receipt"></i> Sistema Punto de Venta (HJ-POS)</h3>
+            <p>Sistema completo para la gestión de ventas, control de inventario en tiempo real, facturación y reportes avanzados.</p>
+            
+            <div class="caracteristicas-grid">
+                <div class="caracteristica">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Ventas Rápidas</h4>
+                    <p>Interface optimizada para transacciones en segundos, por medio de un mouse, touchscreen o scanner de códigos de barra.</p>
+                </div>
+                <div class="caracteristica">
+                    <i class="fas fa-qrcode"></i>
+                    <h4>Facturación</h4>
+                    <p>Generación automática de vales de venta o facturas en diferentes monedas</p>
+                </div>
+                <div class="caracteristica">
+                    <i class="fas fa-table"></i>
+                    <h4>Control de Mesas y Vales</h4>
+                    <p>Gestión de mesas, comandas y cuentas para envío de órdenes a impresoras o pantallas en las áreas. Facturación para envío a domicilio</p>
+                </div>
+                <div class="caracteristica">
+                    <i class="fas fa-chart-bar"></i>
+                    <h4>Reportes en Tiempo Real</h4>
+                    <p>Análisis de ventas, productos más vendidos, auditoría de operaciones, etc.</p>
+                </div>
+            </div>
+
+            <h4 style="margin: 2rem 0 1rem; color: var(--color-primary);">
+                <i class="fas fa-images"></i> Capturas del Sistema POS
+            </h4>
+            <div class="galeria-sistemas">
+                <div class="imagen-sistema">
+                    <img src="images/sistemas/pos_dashboard.png" alt="Dashboard del POS">
+                    <div class="pie-imagen">Dashboard Principal</div>
+                </div>
+                <div class="imagen-sistema">
+                    <img src="images/sistemas/pos_vale.png" alt="Pantalla de Ventas">
+                    <div class="pie-imagen">Pantalla de Ventas</div>
+                </div>
+                <div class="imagen-sistema">
+                    <img src="images/sistemas/pos_reportes.png" alt="Reportes">
+                    <div class="pie-imagen">Reportes Avanzados</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sistema Inventarios -->
+        <section class="sistema-detalle" id="inventarios">
+            <h3><i class="fas fa-boxes"></i> Sistema de Análisis de Ventas, Control de Inventarios y Finanzas (URUSOFT)</h3>
+            <p>Almacenamiento y análisis de las ventas con reportes de consumos según fichas de costo (Sistema Básico). Control de Finanzas y movimientos entre almacenes y áreas de elaboración y venta. Control de Nóminas y Medios Básicos (Sistema Avanzado).</p>
+            
+            <div class="comparativa">
+                <h4 style="color: var(--color-primary); margin-bottom: 1.5rem;">
+                    <i class="fas fa-balance-scale"></i> Comparativa: Sistema Básico vs. Avanzado
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Sistema Básico</th>
+                            <th>Sistema Avanzado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Integración con POS, almacenamiento de ventas</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Configuración de Fichas de Costo</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Reportes de Ventas Diarias, por Grupos, por Dependientes.</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Consumo de Ingredientes, Costo de Ventas, Rentabilidad</td>
+                            <td class="check">✓</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Múltiples Almacenes y Areas de Producción y Venta</td>
+                            <td>✗</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Compras, Despachos, Traslados entre Areas</td>
+                            <td>✗</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Reportes de Movimientos entre áreas</td>
+                            <td>✗</td>
+                            <td class="check">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Módulo de finanzas con Gastos Fijos</td>
+                            <td>✗</td>
+                            <td class="check">✓</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 style="margin: 2rem 0 1rem; color: var(--color-primary);">
+                <i class="fas fa-images"></i> Capturas del Sistema URUSOFT
+            </h4>
+            <div class="galeria-sistemas">
+                <div class="imagen-sistema">
+                    <img src="images/sistemas/urusoft_dash.png" alt="Dashboard del POS">
+                    <div class="pie-imagen">Dashboard Principal</div>
+                </div>
+                <div class="imagen-sistema">
+                    <img src="images/sistemas/urusoft_almacenes.png" alt="Pantalla de Ventas">
+                    <div class="pie-imagen">Menú de Almacenes</div>
+                </div>
+                <div class="imagen-sistema">
+                    <img src="images/sistemas/urusoft_reportes.png" alt="Reportes">
+                    <div class="pie-imagen">Reportes Avanzados</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="contacto.html" class="demo-btn">
+                    <i class="fas fa-play-circle"></i> Solicitar Demo Gratuita
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mismo footer que index.html -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>HJSuite Solutions</h4>
+                    <p>Especialistas en sistemas de gestión empresarial desde 1993.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto Rápido</h4>
+                    <p><i class="fas fa-phone"></i> +535 8145617</p>
+                    <p><i class="fas fa-envelope"></i> dserpa@HJSuite.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ciudad Habana</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horarios</h4>
+                    <p>Lunes a Viernes: 8:00 - 18:00</p>
+                    <p>Sábados: 9:00 - 13:00</p>
+                    <p>Soporte Emergencia: 24/7</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> HJSuite Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

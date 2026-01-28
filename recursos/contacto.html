@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - HJSuite Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos para página de contacto */
+        .contacto-hero {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #f57c00 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 3rem;
+        }
+        
+        .contacto-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contacto-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .info-contacto {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .info-icon {
+            background: var(--color-light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .info-icon i {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+        }
+        
+        .info-content h3 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .formulario-contacto {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn-submit {
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-submit:hover {
+            background: #f57c00;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
+        }
+        
+        .mapa-ubicacion {
+            margin: 4rem 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mapa-placeholder {
+            text-align: center;
+            color: var(--color-gray);
+        }
+        
+        .mapa-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+        
+        .canales-contacto {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .canal-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .canal-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .canal-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-light) 0%, #bbdefb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .canal-icon i {
+            font-size: 2rem;
+            color: var(--color-primary);
+        }
+        
+        .canal-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .tiempo-respuesta {
+            background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+        
+        .whatsapp-direct {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .whatsapp-direct h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #25D366;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .whatsapp-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .requerimientos-especiales {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            margin: 3rem 0;
+        }
+        
+        .requerimientos-especiales h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .requerimientos-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .requerimiento-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .requerimiento-item i {
+            font-size: 2rem;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Misma navegación que index.html -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-cash-register"></i>
+                <span>HJSuite Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="sistemas.html"><i class="fas fa-shopping-cart"></i> Sistemas</a></li>
+                <li><a href="soporte.html"><i class="fas fa-headset"></i> Soporte</a></li>
+                <li><a href="recursos.html"><i class="fas fa-tools"></i> Recursos</a></li>
+                <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="contacto-hero">
+            <h1><i class="fas fa-envelope"></i> Contáctanos</h1>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">
+                Estamos aquí para ayudarte. Escríbenos y te responderemos en menos de 24 horas.
+            </p>
+        </div>
+
+        <div class="contacto-container">
+            <!-- Información de Contacto -->
+            <div class="info-contacto">
+                <h2 style="color: var(--color-primary); margin-bottom: 2rem; text-align: center;">
+                    <i class="fas fa-info-circle"></i> Información de Contacto
+                </h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Teléfonos</h3>
+                        <p style="font-size: 1.3rem; font-weight: bold; color: var(--color-primary);">
+                            +502 1234-5678
+                        </p>
+                        <p style="color: var(--color-gray);">
+                            Lunes a Viernes: 8:00 - 18:00<br>
+                            Sábados: 9:00 - 13:00
+                        </p>
+                        <p style="color: #d32f2f; font-weight: bold; margin-top: 0.5rem;">
+                            <i class="fas fa-exclamation-triangle"></i> Emergencias 24/7: +502 5555-1234
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Correos Electrónicos</h3>
+                        <p style="font-weight: bold; color: var(--color-primary);">
+                            info@HJSuite.com.gt
+                        </p>
+                        <p style="color: var(--color-gray);">
+                            Información general y consultas
+                        </p>
+                        <p style="font-weight: bold; color: var(--color-primary); margin-top: 0.5rem;">
+                            ventas@HJSuite.com.gt
+                        </p>
+                        <p style="color: var(--color-gray);">
+                            Cotizaciones y nuevos clientes
+                        </p>
+                        <p style="font-weight: bold; color: var(--color-primary); margin-top: 0.5rem;">
+                            soporte@HJSuite.com.gt
+                        </p>
+                        <p style="color: var(--color-gray);">
+                            Soporte técnico y consultas de clientes
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Oficina Central</h3>
+                        <p style="font-weight: bold; color: var(--color-primary);">
+                            Zona 10, Guatemala City
+                        </p>
+                        <p style="color: var(--color-gray);">
+                            12 Calle 5-45, Edificio TechCenter, Oficina 302<br>
+                            Ciudad de Guatemala, Guatemala
+                        </p>
+                        <p style="color: var(--color-gray); margin-top: 0.5rem;">
+                            <i class="fas fa-car"></i> Estacionamiento disponible<br>
+                            <i class="fas fa-wheelchair"></i> Acceso para personas con discapacidad
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario de Contacto -->
+            <div class="formulario-contacto">
+                <h2 style="color: var(--color-primary); margin-bottom: 2rem; text-align: center;">
+                    <i class="fas fa-paper-plane"></i> Envíanos un Mensaje
+                </h2>
+                
+                <form id="contacto-form">
+                    <div class="form-group">
+                        <label for="nombre"><i class="fas fa-user"></i> Nombre Completo *</label>
+                        <input type="text" id="nombre" class="form-control" required placeholder="Ingresa tu nombre">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="empresa"><i class="fas fa-building"></i> Empresa</label>
+                        <input type="text" id="empresa" class="form-control" placeholder="Nombre de tu empresa (opcional)">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono"><i class="fas fa-phone"></i> Teléfono *</label>
+                        <input type="tel" id="telefono" class="form-control" required placeholder="+502 1234-5678">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico *</label>
+                        <input type="email" id="email" class="form-control" required placeholder="tu@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="asunto"><i class="fas fa-tag"></i> Asunto *</label>
+                        <select id="asunto" class="form-control" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="cotizacion">Solicitud de Cotización</option>
+                            <option value="soporte">Soporte Técnico</option>
+                            <option value="demo">Solicitud de Demo</option>
+                            <option value="capacitacion">Información de Capacitación</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje"><i class="fas fa-comment"></i> Mensaje *</label>
+                        <textarea id="mensaje" class="form-control" required placeholder="Describe tu consulta o necesidad..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="font-weight: normal;">
+                            <input type="checkbox" required> 
+                            Acepto la <a href="#" style="color: var(--color-secondary);">política de privacidad</a> *
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                    </button>
+                    
+                    <p style="text-align: center; color: var(--color-gray); margin-top: 1rem; font-size: 0.9rem;">
+                        * Campos requeridos. Te responderemos en menos de 24 horas.
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <!-- WhatsApp Directo -->
+        <div class="whatsapp-direct">
+            <h3><i class="fab fa-whatsapp"></i> ¿Prefieres WhatsApp?</h3>
+            <p>Chatea directamente con nuestro equipo de ventas o soporte técnico.</p>
+            <a href="https://wa.me/50212345678" target="_blank" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Abrir WhatsApp
+            </a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+                Horario de chat: Lunes a Viernes 7:00-20:00 | Sábados 9:00-17:00
+            </p>
+        </div>
+
+        <!-- Canales de Contacto -->
+        <h2 style="text-align: center; color: var(--color-primary); margin: 3rem 0 1rem;">
+            <i class="fas fa-broadcast-tower"></i> Otros Canales de Contacto
+        </h2>
+        
+        <div class="canales-contacto">
+            <div class="canal-card">
+                <div class="canal-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Chat en Vivo</h3>
+                <p>Disponible en nuestro sitio web durante horario laboral</p>
+                <div class="tiempo-respuesta">
+                    <i class="fas fa-bolt"></i> Respuesta instantánea
+                </div>
+            </div>
+            
+            <div class="canal-card">
+                <div class="canal-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>Videollamada</h3>
+                <p>Sesiones virtuales para demostraciones o soporte remoto</p>
+                <a href="#" class="recurso-btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 1rem;">
+                    <i class="fas fa-calendar"></i> Agendar
+                </a>
+            </div>
+            
+            <div class="canal-card">
+                <div class="canal-icon">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <h3>Visita Presencial</h3>
+                <p>Agenda una visita a tu negocio para evaluación sin costo</p>
+                <a href="tel:+50212345678" class="recurso-btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 1rem;">
+                    <i class="fas fa-phone"></i> Llamar para agendar
+                </a>
+            </div>
+        </div>
+
+        <!-- Mapa de Ubicación -->
+        <div class="mapa-ubicacion">
+            <div class="mapa-placeholder">
+                <i class="fas fa-map-marked-alt"></i>
+                <h3>Ubicación de Nuestra Oficina</h3>
+                <p>Zona 10, Ciudad de Guatemala</p>
+                <a href="https://maps.google.com/?q=Guatemala+City+Zona+10" target="_blank" class="recurso-btn" style="margin-top: 1rem;">
+                    <i class="fas fa-directions"></i> Ver en Google Maps
+                </a>
+            </div>
+        </div>
+
+        <!-- Requerimientos Especiales -->
+        <div class="requerimientos-especiales">
+            <h3><i class="fas fa-star"></i> ¿Tienes Requerimientos Especiales?</h3>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                Desarrollamos soluciones personalizadas según las necesidades específicas de tu negocio.
+            </p>
+            
+            <div class="requerimientos-list">
+                <div class="requerimiento-item">
+                    <i class="fas fa-code"></i>
+                    <h4>Desarrollo a Medida</h4>
+                    <p>Funciones específicas para tu negocio</p>
+                </div>
+                
+                <div class="requerimiento-item">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h4>Integraciones</h4>
+                    <p>Conexión con otros sistemas</p>
+                </div>
+                
+                <div class="requerimiento-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Aplicación Móvil</h4>
+                    <p>App personalizada para tu empresa</p>
+                </div>
+                
+                <div class="requerimiento-item">
+                    <i class="fas fa-chart-network"></i>
+                    <h4>Sucursales Múltiples</h4>
+                    <p>Sistemas para cadenas de negocios</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="mailto:proyectos@HJSuite.com.gt" class="btn-submit" style="width: auto; display: inline-flex;">
+                    <i class="fas fa-lightbulb"></i> Consultar Proyecto Especial
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mismo footer que index.html -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>HJSuite Solutions</h4>
+                    <p>Especialistas en sistemas de gestión empresarial desde 1993.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto Rápido</h4>
+                    <p><i class="fas fa-phone"></i> +502 1234-5678</p>
+                    <p><i class="fas fa-envelope"></i> info@HJSuite.com.gt</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ciudad de Guatemala</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horarios</h4>
+                    <p>Lunes a Viernes: 8:00 - 18:00</p>
+                    <p>Sábados: 9:00 - 13:00</p>
+                    <p>Soporte Emergencia: 24/7</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> HJSuite Solutions. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Manejo del formulario de contacto
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactoForm = document.getElementById('contacto-form');
+            
+            if (contactoForm) {
+                contactoForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validación básica
+                    const nombre = document.getElementById('nombre').value.trim();
+                    const telefono = document.getElementById('telefono').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const asunto = document.getElementById('asunto').value;
+                    const mensaje = document.getElementById('mensaje').value.trim();
+                    
+                    if (!nombre || !telefono || !email || !asunto || !mensaje) {
+                        alert('Por favor completa todos los campos requeridos.');
+                        return;
+                    }
+                    
+                    if (!document.querySelector('input[type="checkbox"]').checked) {
+                        alert('Debes aceptar la política de privacidad.');
+                        return;
+                    }
+                    
+                    // Simular envío (en producción aquí iría AJAX/Fetch)
+                    const submitBtn = contactoForm.querySelector('.btn-submit');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        alert('¡Mensaje enviado con éxito! Te contactaremos en menos de 24 horas.');
+                        contactoForm.reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // Scroll to top
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 1500);
+                });
+            }
+            
+            // Formatear teléfono
+            const telefonoInput = document.getElementById('telefono');
+            if (telefonoInput) {
+                telefonoInput.addEventListener('input', function(e) {
+                    let value = this.value.replace(/\D/g, '');
+                    if (value.length > 0) {
+                        value = '+502 ' + value;
+                    }
+                    this.value = value;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

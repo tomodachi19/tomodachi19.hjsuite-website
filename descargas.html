@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargas - SysTech Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos específicos para descargas */
+        .descargas-hero {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 3rem;
+        }
+        
+        .categoria-descargas {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--color-accent);
+        }
+        
+        .archivos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .archivo-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s;
+        }
+        
+        .archivo-card:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .archivo-icon {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .archivo-info {
+            margin-bottom: 1rem;
+        }
+        
+        .archivo-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .btn-descarga {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn-descarga:hover {
+            background: var(--color-primary);
+            transform: translateY(-2px);
+        }
+        
+        .versiones {
+            background: #e8f5e9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .version-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem;
+            border-bottom: 1px solid #c8e6c9;
+        }
+        
+        .version-item:last-child {
+            border-bottom: none;
+        }
+        
+        .badge {
+            background: var(--color-accent);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            border-color: var(--color-secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+        }
+        
+        .filtros {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+        
+        .filtro-btn {
+            background: #e9ecef;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filtro-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+        
+        .stats {
+            background: linear-gradient(135deg, #2196f3 0%, #0d47a1 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .stat-item {
+            display: inline-block;
+            margin: 0 2rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .requisitos {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .instrucciones {
+            background: #e3f2fd;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .instrucciones ol {
+            margin-left: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 768px) {
+            .archivos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-item {
+                margin: 1rem;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Misma navegación que las otras páginas -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-cash-register"></i>
+                <span>SysTech Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="sistemas.html"><i class="fas fa-shopping-cart"></i> Sistemas</a></li>
+                <li><a href="descargas.html"><i class="fas fa-download"></i> Descargas</a></li>
+                <li><a href="soporte.html"><i class="fas fa-headset"></i> Soporte</a></li>
+                <li><a href="recursos.html"><i class="fas fa-tools"></i> Recursos</a></li>
+                <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <div class="descargas-hero">
+            <h1><i class="fas fa-download"></i> Centro de Descargas</h1>
+            <p>Actualizaciones, herramientas y recursos para tus sistemas SysTech</p>
+            
+            <div class="search-box">
+                <input type="text" id="search-downloads" placeholder="Buscar actualizaciones, herramientas...">
+            </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="total-downloads">1,247</span>
+                <span class="stat-label">Descargas Totales</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="total-files">28</span>
+                <span class="stat-label">Archivos Disponibles</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="latest-version">v2.2.0</span>
+                <span class="stat-label">Última Versión</span>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filtros">
+            <button class="filtro-btn active" data-categoria="todos">Todos</button>
+            <button class="filtro-btn" data-categoria="actualizaciones">Actualizaciones</button>
+            <button class="filtro-btn" data-categoria="herramientas">Herramientas</button>
+            <button class="filtro-btn" data-categoria="drivers">Drivers</button>
+            <button class="filtro-btn" data-categoria="plantillas">Plantillas</button>
+            <button class="filtro-btn" data-categoria="documentacion">Documentación</button>
+        </div>
+
+        <!-- Categoría: Actualizaciones -->
+        <div class="categoria-descargas" id="actualizaciones">
+            <h2><i class="fas fa-sync-alt"></i> Actualizaciones de Software</h2>
+            <p class="subtitle">Mantén tus sistemas actualizados con las últimas versiones</p>
+            
+            <div class="requisitos">
+                <h4><i class="fas fa-info-circle"></i> Requisitos Previos</h4>
+                <p>Antes de instalar actualizaciones, asegúrate de tener:</p>
+                <ul>
+                    <li>Backup completo de tu base de datos</li>
+                    <li>Windows 10/11 actualizado</li>
+                    <li>Conectividad a internet estable</li>
+                    <li>Espacio en disco: mínimo 2GB libre</li>
+                </ul>
+            </div>
+
+            <!-- Sistema Empresarial -->
+            <h3><i class="fas fa-building"></i> Sistema Empresarial Integral</h3>
+            <div class="versiones">
+                <div class="version-item">
+                    <div>
+                        <strong>v2.2.0 - Estable</strong>
+                        <p>Nuevo: Módulo de facturación electrónica SAT 2024</p>
+                        <small>Publicado: 15 Mar 2024 | Tamaño: 245 MB</small>
+                    </div>
+                    <div>
+                        <span class="badge">RECOMENDADO</span>
+                        <a href="descargas/actualizaciones/sistempresarial/v2.2.0/setup.exe" class="btn-descarga" download>
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="version-item">
+                    <div>
+                        <strong>v2.1.5 - Parche de seguridad</strong>
+                        <p>Corrección de vulnerabilidades y mejoras de rendimiento</p>
+                        <small>Publicado: 28 Feb 2024 | Tamaño: 85 MB</small>
+                    </div>
+                    <div>
+                        <a href="descargas/actualizaciones/sistempresarial/v2.1.5/patch.exe" class="btn-descarga" download>
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sistema POS -->
+            <h3 style="margin-top: 2rem;"><i class="fas fa-cash-register"></i> Sistema Punto de Venta</h3>
+            <div class="archivos-grid">
+                <div class="archivo-card" data-categoria="actualizaciones">
+                    <div class="archivo-icon">
+                        <i class="fas fa-file-archive"></i>
+                    </div>
+                    <div class="archivo-info">
+                        <h4>POS v1.6.0 Full</h4>
+                        <p>Actualización completa con nuevo diseño y reportes mejorados</p>
+                    </div>
+                    <div class="archivo-meta">
+                        <span><i class="far fa-file-archive"></i> ZIP - 180 MB</span>
+                        <span><i class="far fa-calendar"></i> 10 Abr 2024</span>
+                    </div>
+                    <a href="descargas/actualizaciones/sispos/v1.6.0/pos-full.zip" class="btn-descarga" download>
+                        <i class="fas fa-download"></i> Descargar Instalador
+                    </a>
+                </div>
+                
+                <div class="archivo-card" data-categoria="actualizaciones">
+                    <div class="archivo-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="archivo-info">
+                        <h4>POS Patch 1.5.2 → 1.6.0</h4>
+                        <p>Actualización incremental para clientes con versión 1.5.2</p>
+                    </div>
+                    <div class="archivo-meta">
+                        <span><i class="fas fa-wrench"></i> EXE - 45 MB</span>
+                        <span><i class="fas fa-users"></i> 500+ descargas</span>
+                    </div>
+                    <a href="descargas/actualizaciones/sispos/v1.6.0/patch-1.5.2-to-1.6.0.exe" class="btn-descarga" download>
+                        <i class="fas fa-download"></i> Descargar Parche
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categoría: Herramientas -->
+        <div class="categoria-descargas" id="herramientas">
+            <h2><i class="fas fa-tools"></i> Herramientas y Utilidades</h2>
+            <p>Programas auxiliares para la gestión y mantenimiento de tus sistemas</p>
+            
+            <div class="archivos-grid">
+                <div class="archivo-card" data-categoria="herramientas">
+                    <div class="archivo-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="archivo-info">
+                        <h4>Calculadora de Inventarios</h4>
+                        <p>Excel para calcular puntos de reorden, rotación y niveles óptimos</p>
+                    </div>
+                    <div class="archivo-meta">
+                        <span><i class="far fa-file-excel"></i> XLSX - 2.5 MB</span>
+                        <span><i class="fas fa-star"></i> 4.8/5</span>
+                    </div>
+                    <a href="descargas/herramientas/calculadora-inventarios.xlsx" class="btn-descarga" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+                
+                <div class="archivo-card" data-categoria="herramientas">
+                    <div class="archivo-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="archivo-info">
+                        <h4>Herramienta de Backup</h4>
+                        <p>Programa para realizar copias de seguridad automáticas</p>
+                    </div>
+                    <div class="archivo-meta">
+                        <span><i class="fas fa-desktop"></i> EXE - 15 MB</span>
+                        <span><i class="fas fa-shield-alt"></i> Seguro</span>
+                    </div>
+                    <a href="descargas/herramientas/backup-tool.exe" class="btn-descarga" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+                
+                <div class="archivo-card" data-categoria="herramientas">
+                    <div class="archivo-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <div class="archivo-info">
+                        <h4>Configurador de Impresión</h4>
+                        <p>Utilidad para configurar impresoras térmicas y fiscales</p>
+                    </div>
+                    <div class="archivo-meta">
+                        <span><i class="fas fa-cog"></i> EXE - 8 MB</span>
+                        <span>Windows 10/11</span>
+                    </div>
+                    <a href="descargas/herramientas/configurador-impresion.exe" class="btn-descarga" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categoría: Drivers -->
+        <div class="categoria-descargas" id="drivers">
+            <h2><i class="fas fa-microchip"></i> Controladores (Drivers)</h2>
+            <p>Drivers certificados para hardware compatible</p>
+            
+            <div class="archivos-grid">
+                <div class="archivo-card" data-categoria="drivers">
+                    <div class="archivo-icon">
+                        <i class="fas fa-barcode"></i>
+                    </div>
+                    <div class="archivo-info">
+                        <h4>Driver Lector Código de Barras</h4>
+                        <p>Controlador universal para lectores USB comunes</p>
+                    </div>
+                    <div class="archivo-meta">
+                        <span><i class="fas fa-usb"></i> ZIP - 12 MB</span>
+                        <span>v3.2.1</span>
+                    </div>
+                    <a href="descargas/drivers/lector-codigo-barras.zip" class="btn-descarga" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+                
+                <div class="archivo-card" data-categoria="drivers">
+                    <div class="archivo-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <div class="archivo-info">
+                        <h4>Driver Impresora Fiscal</h4>
+                        <p>Controlador para impresoras térmicas SAT</p>
+                    </div>
+                    <div class="archivo-meta">
+                        <span><i class="fas fa-print"></i> EXE - 25 MB</span>
+                        <span>Certificado SAT</span>
+                    </div>
+                    <a href="descargas/drivers/impresora-fiscal.exe" class="btn-descarga" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instrucciones de Instalación -->
+        <div class="instrucciones">
+            <h3><i class="fas fa-book"></i> Instrucciones de Instalación</h3>
+            <ol>
+                <li><strong>Haz backup</strong> de tu base de datos antes de cualquier actualización</li>
+                <li><strong>Cierra</strong> todos los programas SysTech en ejecución</li>
+                <li><strong>Descarga</strong> el archivo correspondiente a tu versión actual</li>
+                <li><strong>Ejecuta</strong> el instalador como Administrador</li>
+                <li><strong>Sigue</strong> las instrucciones del asistente de instalación</li>
+                <li><strong>Reinicia</strong> el equipo si es solicitado</li>
+                <li><strong>Verifica</strong> que la nueva versión funcione correctamente</li>
+            </ol>
+            <p style="margin-top: 1rem; color: #d32f2f;">
+                <i class="fas fa-exclamation-triangle"></i> 
+                <strong>Nota:</strong> Contacta a soporte si encuentras problemas durante la instalación.
+            </p>
+        </div>
+
+        <!-- Nota Final -->
+        <div style="text-align: center; padding: 2rem; background: #f5f5f5; border-radius: 10px; margin: 2rem 0;">
+            <h3><i class="fas fa-question-circle"></i> ¿Necesitas ayuda?</h3>
+            <p>Si tienes problemas con las descargas o la instalación, nuestro equipo de soporte está disponible:</p>
+            <a href="soporte.html" class="btn-descarga" style="background: var(--color-primary);">
+                <i class="fas fa-headset"></i> Contactar Soporte
+            </a>
+        </div>
+    </main>
+
+    <!-- Mismo footer que index.html -->
+    <footer class="footer">
+        <!-- Copia el mismo footer de index.html -->
+    </footer>
+
+    <script>
+        // Funcionalidad para filtros
+        document.addEventListener('DOMContentLoaded', function() {
+            const filtros = document.querySelectorAll('.filtro-btn');
+            const archivos = document.querySelectorAll('.archivo-card');
+            
+            filtros.forEach(filtro => {
+                filtro.addEventListener('click', function() {
+                    // Remover activo de todos
+                    filtros.forEach(f => f.classList.remove('active'));
+                    // Activar este
+                    this.classList.add('active');
+                    
+                    const categoria = this.getAttribute('data-categoria');
+                    
+                    // Mostrar/ocultar archivos
+                    archivos.forEach(archivo => {
+                        if (categoria === 'todos' || archivo.getAttribute('data-categoria') === categoria) {
+                            archivo.style.display = 'block';
+                        } else {
+                            archivo.style.display = 'none';
+                        }
+                    });
+                    
+                    // Scroll a categoría si no es "todos"
+                    if (categoria !== 'todos') {
+                        const seccion = document.getElementById(categoria);
+                        if (seccion) {
+                            seccion.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+            
+            // Búsqueda
+            const searchInput = document.getElementById('search-downloads');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const term = this.value.toLowerCase();
+                    
+                    archivos.forEach(archivo => {
+                        const texto = archivo.textContent.toLowerCase();
+                        if (texto.includes(term)) {
+                            archivo.style.display = 'block';
+                        } else {
+                            archivo.style.display = 'none';
+                        }
+                    });
+                });
+            }
+            
+            // Contador de descargas simulado
+            const descargaBtns = document.querySelectorAll('.btn-descarga');
+            descargaBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Incrementar contador
+                    const totalElement = document.getElementById('total-downloads');
+                    let total = parseInt(totalElement.textContent.replace(/,/g, ''));
+                    totalElement.textContent = (total + 1).toLocaleString();
+                    
+                    // Mostrar mensaje
+                    alert('Descarga iniciada. Por favor, revisa la carpeta de descargas de tu navegador.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
